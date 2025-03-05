@@ -55,15 +55,15 @@ Compare raw audio with ultrasonic audio using Audacity:
 ![](https://github.com/fangfano/Ultrasonic-Attacker/blob/main/picture/ompare%20result%201.png)  
 
 ### Attention  
-1. lalala
-2. 
+1. The frequency of the modulated audio should not be lower than 16khz, which may be heard by human ears.   
+The modulated audio frequency should not be higher than 30khz, and it may not be possible to inject microphone devices with a frequency response range of 20hz-16khz.  
 
 ## Step 2: Ultrasonic Player  
 ### Step 2.1 Equipment list:   
 - Power supply: 12V lithium battery    
-
+![](https://github.com/fangfano/Ultrasonic-Attacker/blob/main/picture/12V%20battery.png)  
 - Audio amplifier: TPA3116D2 High power digital amplifier board dual channel 150W  
-![](https://github.com/fangfano/Ultrasonic-Attacker/blob/main/picture/TPA3116D2.png)  
+![](https://github.com/fangfano/Ultrasonic-Attacker/blob/main/picture/TPA3116D2.png)   
 - Power display: 5A constant voltage constant current step-down power module  
 ![](https://github.com/fangfano/Ultrasonic-Attacker/blob/main/picture/Power%20display%20module.png)  
 - Playback sound card equipment: 192khz USB sound card (USB to 3.5mm audio interface)  
@@ -77,13 +77,26 @@ Compare raw audio with ultrasonic audio using Audacity:
 ![](https://github.com/fangfano/Ultrasonic-Attacker/blob/main/picture/Attack%20system%20wiring%20diagram.png)  
 
 ### Attention  
-1. lalala
-2. 
+1. The result of amplitude modulation (AM) is 20khz-40khz, and according to Nyquist sampling theorem, the sampling rate of 96khz is sufficient to completely restore the signal.   
+If your computer does not support 96khz sampling, we need to support the 96Khz sampling rate of the external sound card connected to the 3.5mm audio cable.  
 
 ## Step 3: Actual attack case  
+We played the ultrasonic audio on the computer, and then injected the attack into the microphone device of another computer, although the ultrasonic ear can not be heard, but the microphone can record obvious voice commands.  
 ![](https://github.com/fangfano/Ultrasonic-Attacker/blob/main/picture/Actual%20working%20condition.png)   
+The microphone recorded the ultrasonic attack audio as follows:  
+
 
 ## Final: Attack Principle  
+The schematic diagram is as follows:  
 ![](https://github.com/fangfano/Ultrasonic-Attacker/blob/main/picture/Attack%20principle.png)  
-Flow chart of modulator operation:  
+Explain:  
+1. Voice capture: First, the microphone receives the sound signal. These sound signals are analog signals that contain a variety of sounds captured from the environment, including human voices, noise, etc. It is assumed that what it receives is the modulated ultrasonic attack audio.
+2. Signal amplification: The analog signal received by the microphone is usually very weak and needs to be amplified by an amplifier to increase the strength of the signal so that it can be further processed. Due to the nonlinear effect of the microphone, low frequency harmonics will be produced in the amplification process of the ultrasonic high frequency signal.
+3. Signal filtering: The amplified signal passes through a low-pass filter (LPF), which removes high-frequency noise from the signal and only allows signals below a certain frequency (such as 20kHz) to pass through. This is to simulate the hearing range of the human ear, which typically cannot hear sounds above 20kHz. Therefore, the ultrasonic part is completely filtered out, leaving only the low-frequency harmonic part, which is the part of the attacker carefully modulated to inject the voice command.
+4. Digitalization: The filtered analog signal is then converted into a digital signal by an analog-to-digital converter (ADC). The ADC samples and quantifies the signal at a set sampling rate (e.g. 192kHz) and bit depth (e.g. 24 bits) to generate a digital signal.
+5. Speech recognition: The digital signal is passed to the speech recognition system. Speech recognition systems use algorithms to convert digital signals into text.
+6. Command execution: Text information is converted into commands that can be recognized by the command execution system. If the command is a pre-defined, identifiable command, then the system will perform the corresponding action.  
+**Thus**, we can generate signals that are inaudible to the human ear but can be captured by microphones by modulating voice commands onto an ultrasonic carrier. After these signals pass through the microphone amplifier and ADC, they are converted into digital signals, which are mistakenly recognized by the speech recognition system as human voice commands, so as to execute our preset commands.  
+
+Ultrasonic audio modulation process:  
 ![](https://github.com/fangfano/Ultrasonic-Attacker/blob/main/picture/Flow%20chart%20of%20modulator%20operation.png)  
