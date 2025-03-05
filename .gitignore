@@ -1,0 +1,8 @@
+# 忽略虚拟环境目录
+venv/
+.git/
+.idea/
+# 忽略所有以 "Recoder_" 开头的文件夹及其内容
+Recoder_*/
+# 忽略所有以 "Select_" 开头的文件夹及其内容
+Select_*/
