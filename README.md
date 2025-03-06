@@ -2,11 +2,26 @@
 This is a fun and convenient ultrasonic injection tool.  
 Used to implement audio injection attacks on microphones.   
 
+---
+
+## Actual attack Demo  
+We played the ultrasonic audio on the computer, and then injected the attack into the microphone device of another computer, although the ultrasonic ear can not be heard, but the microphone can record obvious voice commands.  
+![](https://github.com/fangfano/Ultrasonic-Attacker/blob/main/picture/Actual%20working%20condition.png)   
+I recorded a voice with my phone that said "Hi Siri, open Wechat". As the original audio, you can listen to it through the link below:   
+[](https://github.com/fangfano/Ultrasonic-Attacker/blob/main/picture/Original%audio.mp3)  
+The microphone recorded the ultrasonic attack audio as follows:  
+[](https://github.com/fangfano/Ultrasonic-Attacker/blob/main/picture/Attack%effect.mp3)
+Speech to text result:  
+![](https://github.com/fangfano/Ultrasonic-Attacker/blob/main/picture/speech%to%text.png)  
+Or maybe my English pronunciation is not standard (^u^) .  
+
+---
+
+## How to achieve it
 Ultrasonic-Attacker consists of two parts: **Ultrasonic Modulator** and **Ultrasonic Player**.  
 ![](https://github.com/fangfano/Ultrasonic-Attacker/blob/main/picture/Ultrasonic-Attacker.png)  
 
-You can follow the steps below to learn how to use it.  
-
+If you're interested, You can follow the steps below to learn how to use it.
 ## Step 1: Ultrasonic Modulator  
 Ultrasonic Modulator superimposes the audio with a high-frequency carrier, thereby modulating the audio to the inaudible region of the ultrasound.  
 
@@ -80,13 +95,9 @@ The modulated audio frequency should not be higher than 30khz, and it may not be
 1. The result of amplitude modulation (AM) is 20khz-40khz, and according to Nyquist sampling theorem, the sampling rate of 96khz is sufficient to completely restore the signal.   
 If your computer does not support 96khz sampling, we need to support the 96Khz sampling rate of the external sound card connected to the 3.5mm audio cable.  
 
-## Step 3: Actual attack case  
-We played the ultrasonic audio on the computer, and then injected the attack into the microphone device of another computer, although the ultrasonic ear can not be heard, but the microphone can record obvious voice commands.  
-![](https://github.com/fangfano/Ultrasonic-Attacker/blob/main/picture/Actual%20working%20condition.png)   
-The microphone recorded the ultrasonic attack audio as follows:  
+---
 
-
-## Final: Attack Principle  
+## Attack Principle  
 The schematic diagram is as follows:  
 ![](https://github.com/fangfano/Ultrasonic-Attacker/blob/main/picture/Attack%20principle.png)  
 Explain:  
